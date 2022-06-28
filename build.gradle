@@ -22,6 +22,7 @@ targetCompatibility = 11
 dependencies {
 
     testImplementation ('io.cloudbeat:cb-framework-plugin-junit:0.6.11')
+    testImplementation ('io.cloudbeat:cb-framework-plugin-common:0.6.11')
     implementation('com.codeborne:selenide:5.25.0')
     testImplementation("io.qameta.allure:allure-selenide:${allureVersion}")
     testImplementation('org.slf4j:slf4j-simple:1.7.30')
