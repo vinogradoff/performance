@@ -25,10 +25,7 @@ public class SimpleTest {
 
   @Test
   void workingTest() throws MalformedURLException {
-    var driver=CbJunitExtension.createWebDriver();
-
-    WebDriverRunner.setWebDriver(driver);
-    open("https://github.com");
+      open("https://github.com");
     $("div").shouldBe(visible);
 
   }
