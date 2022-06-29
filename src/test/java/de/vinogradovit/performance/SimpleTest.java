@@ -2,7 +2,7 @@ package de.vinogradovit.performance;
 
 import com.codeborne.selenide.*;
 import io.cloudbeat.junit.CbJunitExtension;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.net.MalformedURLException;
@@ -28,5 +28,11 @@ public class SimpleTest {
       open("https://github.com");
     $("div").shouldBe(visible);
 
+  }
+
+  @Test
+  void theSimplestTest(){
+    System.out.println("Hello CloudBeat");
+    Assertions.assertTrue(true);
   }
 }
