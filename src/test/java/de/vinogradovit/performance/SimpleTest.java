@@ -1,7 +1,6 @@
 package de.vinogradovit.performance;
 
 import com.codeborne.selenide.*;
-import io.cloudbeat.junit.CbJunitExtension;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -10,7 +9,7 @@ import java.net.MalformedURLException;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
-@ExtendWith(CbJunitExtension.class)
+//@ExtendWith(CbJunitExtension.class)
 public class SimpleTest {
 
   @Test

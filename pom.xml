@@ -12,7 +12,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>11</maven.compiler.target>
         <maven.compiler.source>11</maven.compiler.source>
-        <selenide.remote/>
         <!-- parameters for the applications-->
         <headless>false</headless>
         <selenide.timeout>4000</selenide.timeout>
@@ -32,27 +31,54 @@
         </repository>
     </repositories>
     <dependencies>
-        <dependency>
+
+      <dependency>
             <groupId>io.cloudbeat</groupId>
             <artifactId>cb-framework-plugin-junit</artifactId>
             <version>0.6.11</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.seleniumhq.selenium</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-jdk14</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
             <scope>test</scope>
         </dependency>
-        <dependency>
+       <!-- <dependency>
             <groupId>io.cloudbeat</groupId>
             <artifactId>cb-framework-plugin-common</artifactId>
             <version>0.12.11</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.seleniumhq.selenium</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>net.lightbody.bmp</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+/-->
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
-            <version>6.7.0</version>
+            <version>6.6.6</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.7.30</version>
+            <version>1.7.36</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -82,19 +108,11 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.4/aspectjweaver-1.9.4.jar"
                     </argLine>
                     <systemPropertyVariables>
-                        <junit.jupiter.execution.parallel.enabled>true</junit.jupiter.execution.parallel.enabled>
-                        <junit.jupiter.execution.parallel.mode.default>same_thread</junit.jupiter.execution.parallel.mode.default>
-                        <junit.jupiter.execution.parallel.mode.classes.default>concurrent</junit.jupiter.execution.parallel.mode.classes.default>
-                        <junit.jupiter.execution.parallel.config.strategy>fixed</junit.jupiter.execution.parallel.config.strategy>
-                        <junit.jupiter.execution.parallel.config.fixed.parallelism>6</junit.jupiter.execution.parallel.config.fixed.parallelism>
-                        <junit.jupiter.extensions.autodetection.enabled>true</junit.jupiter.extensions.autodetection.enabled>
-                        <org.slf4j.simpleLogger.defaultLogLevel>debug</org.slf4j.simpleLogger.defaultLogLevel>
-                        <org.slf4j.simpleLogger.log.io.github.bonigarcia>trace</org.slf4j.simpleLogger.log.io.github.bonigarcia>
+                        <junit.jupiter.extensions.autodetection.enabled>false</junit.jupiter.extensions.autodetection.enabled>
                         <selenide.timeout>${selenide.timeout}</selenide.timeout>
                         <selenide.browserSize>1900x1000</selenide.browserSize>
                         <selenide.headless>${headless}</selenide.headless>
                         <selenoid.video>${selenoid.video}</selenoid.video>
-                        <selenide.remote>${selenide.remote}</selenide.remote>
                     </systemPropertyVariables>
                 </configuration>
                 <dependencies>
